@@ -13,9 +13,9 @@ namespace ShoeStopLibrary.DataProvider
         public DbSet<Orders> Orders { get; set; }
         public DbSet<Address> Address { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public DataAccess(DbContextOptions<DataAccess> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShoeStop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
     }
 }
