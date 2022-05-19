@@ -42,6 +42,20 @@ namespace CRUD.Controllers
             return address;
         }
 
+        // GET: api/Addresses/user/
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<Address>>> GetAddressU(int id)
+        {
+            var address = await _context.Address.Where(data => data.userId == id).ToListAsync();
+
+            if (address == null)
+            {
+                return NotFound();
+            }
+
+            return address;
+        }
+
         // PUT: api/Addresses/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

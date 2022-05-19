@@ -42,6 +42,20 @@ namespace CRUD.Controllers
             return users;
         }
 
+        // GET: api/Users/5
+        [HttpGet("email/{email}")]
+        public ActionResult<Users> GetUsers(string email)
+        {
+            var users = _context.Users.Single(data => data.email == email);
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return users;
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
