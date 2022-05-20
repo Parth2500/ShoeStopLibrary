@@ -42,6 +42,20 @@ namespace CRUD.Controllers
             return orders;
         }
 
+        // GET: api/Orders/5
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<Orders>>> GetOrdersU(int id)
+        {
+            var orders = await _context.Orders.Where(data => data.userId == id).ToListAsync();
+
+            if (orders == null)
+            {
+                return NotFound();
+            }
+
+            return orders;
+        }
+
         // PUT: api/Orders/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
